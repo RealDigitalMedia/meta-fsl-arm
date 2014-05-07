@@ -8,7 +8,7 @@ DEPENDS = "alsa-lib virtual/kernel"
 
 LIC_FILES_CHKSUM = "file://COPYING.GPL;md5=94d55d512a9ba36caa9b7df079bae19f"
 
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.tar.gz"
 SRC_URI[md5sum] = "b1ca7a250a8cd5da07062081b30b4118"
