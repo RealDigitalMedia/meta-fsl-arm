@@ -47,8 +47,9 @@ MACHINE_SOCARCH_vf60 = "${TUNE_PKGARCH}-vf60"
 PACKAGE_EXTRA_ARCHS_append = " ${MACHINE_SOCARCH}"
 
 MACHINE_ARCH_FILTER = "virtual/kernel"
-MACHINE_SOCARCH_FILTER_mx5 = "virtual/libgles1 virtual/libgles2 virtual/egl virtual/mesa virtual/libgl"
-MACHINE_SOCARCH_FILTER_mx6 = "virtual/libgles1 virtual/libgles2 virtual/egl virtual/mesa virtual/libgl"
+MACHINE_SOCARCH_FILTER = "libfslcodec libfslvpuwrap libfslparser gst-fsl-plugins"
+MACHINE_SOCARCH_FILTER_append_mx5 = " virtual/libgles1 virtual/libgles2 virtual/egl virtual/mesa virtual/libgl"
+MACHINE_SOCARCH_FILTER_append_mx6 = " virtual/libgles1 virtual/libgles2 virtual/egl virtual/mesa virtual/libgl"
 
 INHERIT += "fsl-dynamic-packagearch"
 
@@ -74,10 +75,14 @@ MACHINE_EXTRA_RRECOMMENDS_append_mx6 = " fsl-alsa-plugins"
 # Extra udev rules
 MACHINE_EXTRA_RRECOMMENDS += "udev-extraconf"
 
-# Gstreamer plugin
+# GStreamer 0.10 plugins
 MACHINE_GSTREAMER_PLUGIN ?= "gst-fsl-plugin"
 MACHINE_GSTREAMER_PLUGIN_mx3 ?= ""
 MACHINE_GSTREAMER_PLUGIN_vf60 ?= ""
+
+# GStreamer 1.0 plugins
+MACHINE_GSTREAMER_1_0_PLUGIN ?= ""
+MACHINE_GSTREAMER_1_0_PLUGIN_mx6 ?= "gstreamer1.0-plugins-imx-meta"
 
 # mx5 GPU libraries
 GPU_FLAVOUR = "${@base_contains('DISTRO_FEATURES', 'x11', 'x11-', '', d)}"
